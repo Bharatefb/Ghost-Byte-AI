@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0a10">
+  <title>GHOSTBYTE — A little memory. An endless afterlife.</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">👻</span>
+      <span>GHOSTBYTE<small>A LITTLE MEMORY. AN ENDLESS AFTERLIFE.</small></span>
+    </a>
+    <div class="system-status">
+      <span class="status-dot" id="statusDot"></span>
+      <span id="statusText">Connecting to the archive…</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <p class="eyebrow">THE ARCHIVE</p>
+      <button class="nav-item active" data-view="memories">◈ Memory Vault</button>
+      <button class="nav-item" data-view="ask">⌘ Ask the Archive</button>
+      <button class="nav-item" data-view="stories">☾ Ghost Story Studio</button>
+
+      <div class="sidebar-note">
+        <span>✳</span>
+        <p>Some memories fade.<br>Others become part of the machine.</p>
+      </div>
+
+      <div class="model-info">
+        <span class="eyebrow">LOCAL INTELLIGENCE</span>
+        <strong>Qwen 3.5 · 2B</strong>
+        <small>Powered by Ollama</small>
+        <small>Private by design.</small>
+      </div>
+    </aside>
+
+    <section class="workspace">
+      <section class="view" id="memoriesView">
+        <div class="hero">
+          <span class="eyebrow">01 / THE MEMORY VAULT</span>
+          <h1>Nothing is ever<br><em>truly forgotten.</em></h1>
+          <p>Preserve a moment. Give the past somewhere to live.</p>
+          <button class="primary" id="newMemory">+ Preserve a memory</button>
+        </div>
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">YOUR COLLECTION</span>
+            <h2>Fragments of the past</h2>
+          </div>
+          <span class="count" id="memoryCount">0 MEMORIES</span>
+        </div>
+
+        <input id="memorySearch" class="search"
+          placeholder="Search titles, people, places, tags..." />
+
+        <div id="memoryList" class="memory-grid"></div>
+
+        <form id="memoryForm" class="panel hidden">
+          <div class="section-heading">
+            <h2>Preserve a moment</h2>
+            <button type="button" class="text-button" id="cancelMemory">Close</button>
+          </div>
+          <input type="hidden" id="memoryId">
+          <label>Memory title *
+            <input id="memoryTitle" maxlength="200" required
+              placeholder="The summer at grandmother's house">
+          </label>
+          <div class="form-grid">
+            <label>Date
+              <input id="memoryDate" type="date">
+            </label>
+            <label>People
+              <input id="memoryPeople" maxlength="500"
+                placeholder="Names or relationships">
+            </label>
+          </div>
+          <label>Location
+            <input id="memoryLocation" maxlength="200"
+              placeholder="A home, a city, a place...">
+          </label>
+          <label>Tags
+            <input id="memoryTags" maxlength="500"
+              placeholder="childhood, summer, family">
+          </label>
+          <label>Tell the story *
+            <textarea id="memoryContent" rows="6" maxlength="12000" required
+              placeholder="What happened? What do you remember most?"></textarea>
+          </label>
+          <button class="primary" type="submit">Save to the archive</button>
+          <p id="memoryFormMessage" class="message" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="view hidden" id="askView">
+        <div class="hero compact">
+          <span class="eyebrow">02 / A CONVERSATION WITH THE PAST</span>
+          <h1>Ask what <em>remains.</em></h1>
+          <p>Question your saved memories. The archive answers from what you recorded.</p>
+        </div>
+        <div class="panel">
+          <div class="chat-mark">👻</div>
+          <p class="eyebrow">THE ARCHIVIST IS LISTENING</p>
+          <form id="askForm">
+            <label for="question">What would you like to remember?</label>
+            <textarea id="question" rows="3" maxlength="1000" required
+              placeholder="What did I write about my childhood home?"></textarea>
+            <button class="primary" type="submit">Ask the archive ↗</button>
+          </form>
+          <div id="answer" class="answer" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="view hidden" id="storiesView">
+        <div class="hero compact">
+          <span class="eyebrow">03 / THE GHOST STORY ENGINE</span>
+          <h1>The past has <em>another side.</em></h1>
+          <p>Give a memory a fictional afterlife. The events beyond your original memory are imagined.</p>
+        </div>
+        <div class="panel">
+          <form id="storyForm">
+            <label for="storyMemory">Choose a memory</label>
+            <select id="storyMemory" required>
+              <option value="">Select a memory from the vault</option>
+            </select>
+            <label for="storyTone">Atmosphere</label>
+            <select id="storyTone">
+              <option value="eerie">Eerie and atmospheric</option>
+              <option value="melancholic">Melancholic and nostalgic</option>
+              <option value="folklore">Folklore and the supernatural</option>
+              <option value="psychological horror">Psychological horror</option>
+            </select>
+            <button class="primary" type="submit">Summon a story ✦</button>
+          </form>
+          <div id="storyResult" class="story-result" aria-live="polite"></div>
+        </div>
+        <div class="section-heading">
+          <h2>Previously summoned</h2>
+        </div>
+        <div id="storyList" class="story-list"></div>
+      </section>
+
+      <footer>
+        <span>GHOSTBYTE © 2026</span>
+        <span>LOCAL AI · YOUR MEMORIES · YOUR MACHINE</span>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>
