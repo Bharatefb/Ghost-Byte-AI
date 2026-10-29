@@ -3,11 +3,11 @@ import sql from "mssql";
 import "dotenv/config";
 
 const config = {
-  server: process.env.DB_SERVER || "1.7.39.250",
+  server: process.env.DB_SERVER || "DB_SERVER",
   port: Number(process.env.DB_PORT) || "",
-  database: process.env.DB_NAME || "CFS",
-  user: process.env.DB_USER || "sa",
-  password: process.env.DB_PASSWORD || "P@$$m0rb",
+  database: process.env.DB_NAME || "DB_NAME",
+  user: process.env.DB_USER || "DB_USER",
+  password: process.env.DB_PASSWORD || "DB_PASSWORD",
   options: {
     encrypt: process.env.DB_ENCRYPT === "false",
     trustServerCertificate:
